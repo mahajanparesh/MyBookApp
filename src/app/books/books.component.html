@@ -1,10 +1,13 @@
-<h2>Books List</h2>
-<button (click)="toggleBooks()">
-  <ng-container *ngIf="!isShowing">Show Books</ng-container>
-  <ng-container *ngIf="isShowing">Hide Books</ng-container>
-</button>
-<ul *ngIf="isShowing">
-  <div class="container-fluid">
+<div class="books-list">
+  <h2>Books List</h2>
+  <button (click)="toggleBooks()">
+    <ng-container *ngIf="!isShowing">Show Books</ng-container>
+    <ng-container *ngIf="isShowing">Hide Books</ng-container>
+  </button>
+</div>
+
+<div class="container-fluid">
+  <div *ngIf="isShowing">
     <div class="row">
       <div
         class="col-md-6 col-lg-3 col-sm-12"
@@ -15,4 +18,4 @@
       </div>
     </div>
   </div>
-</ul>
+</div>
