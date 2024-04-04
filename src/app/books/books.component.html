@@ -1,0 +1,18 @@
+<h2>Books List</h2>
+<button (click)="toggleBooks()">
+  <ng-container *ngIf="!isShowing">Show Books</ng-container>
+  <ng-container *ngIf="isShowing">Hide Books</ng-container>
+</button>
+<ul *ngIf="isShowing">
+  <div class="container-fluid">
+    <div class="row">
+      <div
+        class="col-md-6 col-lg-3 col-sm-12"
+        *ngFor="let singlebook of books; let i = index"
+        style="margin-top: 30px"
+      >
+        <app-book [book]="singlebook"></app-book>
+      </div>
+    </div>
+  </div>
+</ul>
