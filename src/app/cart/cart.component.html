@@ -1,0 +1,50 @@
+<div class="carts-list">
+  <h2>Carts List</h2>
+</div>
+
+<div class="cart-container">
+  <div class="cart-card">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col">
+              <h4><b>Shopping Cart</b></h4>
+            </div>
+            <div class="col align-self-center text-right text-muted">
+              0 items
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let cartBook of getDetails()">
+          <div class="row border-top border-bottom">
+            <div class="row main align-items-center">
+              <div class="col-2">
+                <img class="img-fluid" src="{{ cartBook.image }}" />
+              </div>
+              <div class="col">
+                <div class="row">{{ cartBook.name }}</div>
+              </div>
+              <div class="col">
+                <a class="incre&decre" (click)="decrementQuantity(cartBook.id)"
+                  >-</a
+                ><a class="border">{{ cartBook.quantity }}</a
+                ><a class="incre&decre" (click)="incrementQuantity(cartBook.id)"
+                  >+</a
+                >
+              </div>
+              <div class="col">
+                {{ cartBook.amount | currency : "INR" }}
+                <span class="close" (click)="deleteBook(cartBook.id)"
+                  >&#10005;</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 summary"></div>
+    </div>
+  </div>
+</div>
+<button (click)="sessionClear()">Clear Session</button>

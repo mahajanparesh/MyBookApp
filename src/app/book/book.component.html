@@ -14,7 +14,7 @@
     <h3 class="card-title">{{ book.name | titlecase }}</h3>
     <p class="'card-text">by {{ book.author | titlecase }}</p>
     <p class="'card-text">{{ book.amount | currency : "INR" }}</p>
-    <button (click)="addToCart(book)" class="btn btn-primary btn-lg">
+    <button (click)="addToCart()" class="btn btn-primary btn-lg">
       Add to Cart
     </button>
   </div>

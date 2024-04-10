@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../types/book';
 
 @Component({
@@ -8,7 +8,7 @@ import { Book } from '../types/book';
 })
 export class BookComponent implements OnInit {
   @Input() book: Book = {} as Book;
-
+  @Output() bookEmitter = new EventEmitter<Book>();
   ngOnInit(): void {
     const storedBooks = localStorage.getItem('book');
     if (!storedBooks) {
@@ -17,9 +17,7 @@ export class BookComponent implements OnInit {
       this.book = JSON.parse(storedBooks);
     }
   }
-  addToCart(book: any): void {
-    let cart: any[] = JSON.parse(sessionStorage.getItem('cart') || '[]');
-    cart.push(book);
-    sessionStorage.setItem('cart', JSON.stringify(cart));
+  addToCart(): void {
+    this.bookEmitter.emit(this.book);
   }
 }

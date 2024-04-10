@@ -14,7 +14,10 @@
         *ngFor="let singlebook of books; let i = index"
         style="margin-top: 30px"
       >
-        <app-book [book]="singlebook"></app-book>
+        <app-book
+          (bookEmitter)="addToCart($event)"
+          [book]="singlebook"
+        ></app-book>
       </div>
     </div>
   </div>

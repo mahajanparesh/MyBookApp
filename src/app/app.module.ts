@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { BooksComponent } from './books/books.component';
-import { BookComponent } from './book/book.component';
+import { CartComponent } from './cart/cart.component';
+import { BooksModule } from './books/books.module';
 @NgModule({
-  declarations: [AppComponent, BooksComponent, BookComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  declarations: [AppComponent, CartComponent],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, BooksModule],
   providers: [],
   bootstrap: [AppComponent],
 })
