@@ -12,39 +12,91 @@
               <h4><b>Shopping Cart</b></h4>
             </div>
             <div class="col align-self-center text-right text-muted">
-              0 items
+              {{ cart.length }} items
             </div>
           </div>
         </div>
-        <div *ngFor="let cartBook of getDetails()">
+        <div *ngFor="let cartBook of cart">
           <div class="row border-top border-bottom">
             <div class="row main align-items-center">
               <div class="col-2">
-                <img class="img-fluid" src="{{ cartBook.image }}" />
+                <img class="img-fluid" [src]="cartBook.image" />
               </div>
               <div class="col">
                 <div class="row">{{ cartBook.name }}</div>
+                <div class="row text-muted">{{ cartBook.author }}</div>
               </div>
               <div class="col">
                 <a class="incre&decre" (click)="decrementQuantity(cartBook.id)"
                   >-</a
-                ><a class="border">{{ cartBook.quantity }}</a
-                ><a class="incre&decre" (click)="incrementQuantity(cartBook.id)"
+                >
+                <a class="border">{{ cartBook.quantity }}</a>
+                <a class="incre&decre" (click)="incrementQuantity(cartBook.id)"
                   >+</a
                 >
               </div>
               <div class="col">
                 {{ cartBook.amount | currency : "INR" }}
-                <span class="close" (click)="deleteBook(cartBook.id)"
+                <span class="close" (click)="deleteBook(cartBook.id)" style=""
                   >&#10005;</span
                 >
               </div>
             </div>
           </div>
         </div>
+        <div class="back-to-shop">
+          <a href="">&leftarrow;</a><span class="text-muted">Back to shop</span>
+        </div>
       </div>
-      <div class="col-md-4 summary"></div>
+      <div class="col-md-4 summary">
+        <div>
+          <h5><b>Summary</b></h5>
+          <hr />
+          <div class="row">
+            <div class="col" style="padding-left: 0">
+              ITEMS {{ cart.length }}
+            </div>
+            <div class="col text-right">
+              {{ totalAmount | currency : "INR" }}
+            </div>
+          </div>
+          <form>
+            <p style="padding: 25px 0px 0px 0px">AMOUNT BREAKAGE</p>
+            <div
+              class="row"
+              style="
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                font-weight: 500;
+                padding: 20px 0px 0px 0px;
+              "
+            >
+              <div class="col">Total Price:</div>
+              <div class="col text-right">
+                {{ totalAmount | currency : "INR" }}
+              </div>
+            </div>
+            <div
+              class="row"
+              style="font-weight: 500; padding: 0px 0px 10px 0px"
+            >
+              <div class="col">Discount:</div>
+              <div class="col text-right" style="color: #14a44c">
+                -{{ totalAmount * 0.05 | currency : "INR" }}
+              </div>
+            </div>
+          </form>
+          <div
+            class="row"
+            style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+          >
+            <div class="col">GRAND TOTAL</div>
+            <div class="col text-right">
+              {{ totalAmount - totalAmount * 0.05 | currency : "INR" }}
+            </div>
+          </div>
+          <button class="btn">CHECKOUT</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<button (click)="sessionClear()">Clear Session</button>

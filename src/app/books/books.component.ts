@@ -17,8 +17,10 @@ export class BooksComponent implements OnInit {
     private cartService: CartService
   ) {}
 
-  books: Book[] = this.booksService.getAllBookDetails();
-  ngOnInit() {}
+  books: Book[] = [];
+  ngOnInit() {
+    this.books = this.booksService.getAllBookDetails();
+  }
   handleClick() {
     this.isShowing = false;
   }

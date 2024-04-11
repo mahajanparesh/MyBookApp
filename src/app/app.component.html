@@ -23,13 +23,12 @@
       <li><a href="#contact">Contact</a></li>
       <!-- New list item for cart button -->
       <li class="cart-button">
-        <a href="#cart"
+        <a routerLink="/cart"
           ><img src="../assets/cart.png" alt="Cart" width="25px"
         /></a>
       </li>
     </ul>
   </div>
 </nav>
-
-<app-books></app-books>
-<app-cart></app-cart>
+<router-outlet></router-outlet>
+<button (click)="sessionClear()">Clear Session</button>
