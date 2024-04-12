@@ -99,13 +99,11 @@ a {
 }
 
 #navbar li a:hover {
-  /* border-bottom: 1px solid rgb(28, 121, 184); */
   color: rgb(28, 121, 184);
   transition: all 1s ease;
   -webkit-transition: all 1s ease;
 }
 
-/* Animated Bottom Line */
 #navbar li a:before,
 #navbar li a:after {
   content: "";
@@ -124,7 +122,6 @@ a {
 #navbar li a:after {
   background: rgb(13, 26, 38);
   right: 0;
-  /* transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); */
 }
 
 #navbar li a:hover:before {
@@ -138,10 +135,6 @@ a {
   width: 100%;
   /* transition: 0s; */
 }
-
-/*======================================================
-                      Mobile Menu Menu Icon
-    ======================================================*/
 @media (max-width: 640px) {
   .menuIcon {
     cursor: pointer;
@@ -174,8 +167,6 @@ a {
     top: -8px;
     height: 2px;
     width: 20px;
-    /*     -webkit-transition: top 0.2s ease 0.3s;
-      transition: top 0.2s ease 0.3s; */
     -webkit-transition: 0.3s width 0.4s;
     transition: 0.3s width 0.4s;
   }
@@ -189,13 +180,10 @@ a {
     bottom: -8px;
     height: 2px;
     width: 20px;
-    /*     -webkit-transition: top 0.2s ease 0.3s;
-      transition: top 0.2s ease 0.3s; */
     -webkit-transition: 0.3s width 0.4s;
     transition: 0.3s width 0.4s;
   }
 
-  /* Bars Shadows */
   .icon-bars.overlay {
     background: rgb(97, 114, 129);
     background: rgb(183, 199, 211);
@@ -286,7 +274,6 @@ a {
     }
   }
 
-  /* Toggle Menu Icon */
   .menuIcon.toggle .icon-bars {
     top: 5px;
     transform: translate3d(0, 5px, 0) rotate(135deg);
@@ -314,10 +301,6 @@ a {
     transition: all 0s ease 0s;
   }
 }
-
-/*======================================================
-                     Responsive Mobile Menu 
-    ======================================================*/
 .overlay-menu {
   background: lightblue;
   color: rgb(13, 26, 38);
@@ -345,14 +328,11 @@ a {
   display: block;
   font-size: 1.8em;
   letter-spacing: 4px;
-  /*   opacity: 0; */
   padding: 10px 0;
   text-align: right;
   text-transform: uppercase;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
-  /*   -webkit-transition: 0.2s opacity 0.2s ease-out;
-    transition: 0.2s opacity 0.2s ease-out; */
 }
 
 .overlay-menu li a:hover,
