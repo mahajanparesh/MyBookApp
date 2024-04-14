@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   isLoading: boolean = false;
   isAuthenticated: boolean = false;
+  isSeller: boolean = false;
   constructor(private router: Router) {}
 
   login(loginForm: LoginForm) {
@@ -35,6 +36,7 @@ export class AuthService {
         alert('error while Signing In' + error);
         this.isLoading = false;
         this.isAuthenticated = false;
+        this.checkSeller(loginForm.email);
         const errorCode = error.code;
         const errorMessage = error.message;
       });
@@ -52,6 +54,7 @@ export class AuthService {
         const user = userCredential.user;
         this.isLoading = false;
         this.isAuthenticated = true;
+        this.checkSeller(registerForm.email);
         this.router.navigate(['']);
         alert('Signup Successful!!!');
       })
@@ -67,7 +70,8 @@ export class AuthService {
   onInitAuthChangeListener() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user: User | null) => {
-      this.isAuthenticated = !!user; // If user exists, isAuthenticated is true
+      this.isAuthenticated = !!user;
+      this.checkSeller(user?.email || '');
     });
   }
   logout() {
@@ -75,10 +79,16 @@ export class AuthService {
     signOut(auth)
       .then(() => {
         this.isAuthenticated = false;
+        this.isSeller = false;
         this.router.navigate(['auth']);
       })
       .catch((error) => {
         console.log('Something went wrong!!! ' + error);
       });
+  }
+  checkSeller(email: string) {
+    if (email === 'seller@gmail.com') {
+      this.isSeller = true;
+    }
   }
 }

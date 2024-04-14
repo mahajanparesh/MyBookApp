@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { firebaseConfig } from '../firebase.config';
 import { initializeApp } from 'firebase/app';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { SearchService } from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,11 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'BooksApp';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private searchService: SearchService
+  ) {}
   ngOnInit() {
     initializeApp(firebaseConfig);
     this.authService.onInitAuthChangeListener();
@@ -26,5 +32,18 @@ export class AppComponent {
   logout() {
     this.sessionClear();
     this.authService.logout();
+  }
+
+  cart() {
+    if (!this.isAuthenticated()) {
+      alert('Login First...');
+      this.router.navigate(['./auth']);
+    }
+  }
+  isSeller() {
+    return this.authService.isSeller;
+  }
+  toggleSearch() {
+    this.searchService.toggleSearchVisibility();
   }
 }
