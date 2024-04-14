@@ -1,0 +1,21 @@
+<div
+  class="card h-100 border border-white img-thumbnail"
+  style="
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  "
+>
+  <img
+    [src]="book.image"
+    [alt]="book.name"
+    class="card-img-top img-fluid"
+    style="height: 450px"
+  />
+  <div class="card-body">
+    <h3 class="card-title">{{ book.name | titlecase }}</h3>
+    <p class="'card-text">by {{ book.author | titlecase }}</p>
+    <p class="'card-text">{{ book.amount | currency : "INR" }}</p>
+    <button (click)="addToCart()" class="btn btn-primary btn-lg">
+      Add to Cart
+    </button>
+  </div>
+</div>
