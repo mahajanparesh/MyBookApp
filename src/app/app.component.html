@@ -17,7 +17,7 @@
 
     <!-- Navbar Links -->
     <ul id="menu">
-      <li><a href="#">Home</a></li>
+      <li><a href="">Home</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -29,10 +29,12 @@
       </li>
       <!-- Login Button -->
       <li class="login-button">
-        <a routerLink="/login">Login</a>
+        <a routerLink="/auth" *ngIf="!isAuthenticated()">Login</a>
+      </li>
+      <li class="logout-button" *ngIf="isAuthenticated()" (click)="logout()">
+        <a routerLink="/auth">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
 <router-outlet></router-outlet>
-<button (click)="sessionClear()">Clear Session</button>

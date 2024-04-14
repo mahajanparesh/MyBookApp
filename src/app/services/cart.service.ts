@@ -6,21 +6,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class CartService {
   private cartItems: Cart[] = [];
-  private cartSubject: BehaviorSubject<Cart[]> = new BehaviorSubject<Cart[]>(
-    []
-  );
 
   constructor() {
     const storedCartItems = sessionStorage.getItem('cartItems');
     if (storedCartItems) {
       this.cartItems = JSON.parse(storedCartItems);
     }
-    this.cartSubject.next(this.cartItems); // Emit initial cart items
   }
 
-  getCartItems(): Observable<Cart[]> {
-    return this.cartSubject.asObservable();
-  }
   getCartDetails(): Cart[] {
     return JSON.parse(sessionStorage.getItem('cartItems') || '[]');
   }
@@ -43,7 +36,6 @@ export class CartService {
       this.cartItems.push(cartItem);
     }
     sessionStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-    this.cartSubject.next(this.cartItems); // Emit updated cart items
   }
 
   deleteBookFromCart(bookId: number): void {
@@ -51,7 +43,6 @@ export class CartService {
     if (bookIndex !== -1) {
       this.cartItems.splice(bookIndex, 1);
       sessionStorage.setItem('cartItems', JSON.stringify(this.cartItems));
-      this.cartSubject.next(this.cartItems); // Emit updated cart items
     }
   }
   incrementQuantity(bookId: number): void {

@@ -2,12 +2,13 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BooksComponent } from './books/books.component';
 import { CartComponent } from './cart/cart.component';
-import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: BooksComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  { path: 'auth', component: AuthComponent },
 ];
 
 @NgModule({

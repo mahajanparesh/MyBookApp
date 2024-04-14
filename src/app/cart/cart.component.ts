@@ -14,10 +14,11 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.cartService.getCartItems().subscribe((cartItems) => {
-      this.cart = cartItems;
-      this.calculateTotalAmount();
-    });
+    // this.cartService.getCartItems().subscribe((cartItems) => {
+    //   this.cart = cartItems;
+    //   this.calculateTotalAmount();
+    // });
+    this.getDetails();
   }
 
   deleteBook(bookId: number): void {

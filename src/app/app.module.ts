@@ -6,10 +6,18 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CartComponent } from './cart/cart.component';
 import { BooksModule } from './books/books.module';
-import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent, CartComponent, LoginComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, BooksModule],
+  declarations: [AppComponent, CartComponent, AuthComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    BooksModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
