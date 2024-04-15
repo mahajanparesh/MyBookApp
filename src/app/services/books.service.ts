@@ -72,4 +72,12 @@ export class BooksService {
   getAllBookDetails(): Book[] {
     return this.books;
   }
+  filterBooks(bookName: string, authorName: string): Book[] {
+    return this.books.filter((book) => {
+      return (
+        book.name.toLowerCase().includes(bookName.toLowerCase()) &&
+        book.author.toLowerCase().includes(authorName.toLowerCase())
+      );
+    });
+  }
 }
