@@ -29,16 +29,15 @@ export class BooksComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.books = this.booksService.getAllBookDetails();
+    this.booksService.getAllBookDetails().subscribe((books: Book[]) => {
+      this.books = books;
+    });
 
-    // Subscribe to search query changes
     this.searchSubscription = this.searchService
       .getSearchQuery()
       .subscribe((query) => {
         this.filterBooks(query);
       });
-
-    // Subscribe to search visibility changes
     this.searchService.searchVisibility$.subscribe((isVisible) => {
       this.isSearchVisible = isVisible;
       this.isShowing = isVisible;
@@ -46,12 +45,11 @@ export class BooksComponent implements OnInit {
   }
 
   filterBooks(query: { bookName: string; authorName: string }) {
-    // Filter books based on the search query
-    // Assuming you have a method in your BooksService to filter books
-    this.books = this.booksService.filterBooks(
-      query.bookName,
-      query.authorName
-    );
+    this.booksService
+      .filterBooks(query.bookName, query.authorName)
+      .subscribe((filteredBooks: Book[]) => {
+        this.books = filteredBooks;
+      });
   }
 
   handleClick() {
@@ -65,7 +63,9 @@ export class BooksComponent implements OnInit {
   toggleBooks() {
     this.isShowing = !this.isShowing;
     if (this.isShowing && !this.isSearchVisible) {
-      this.books = this.booksService.getAllBookDetails();
+      this.booksService.getAllBookDetails().subscribe((books: Book[]) => {
+        this.books = books;
+      });
     }
   }
 
@@ -79,7 +79,6 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    // Unsubscribe to avoid memory leaks
     this.searchSubscription.unsubscribe();
   }
 }

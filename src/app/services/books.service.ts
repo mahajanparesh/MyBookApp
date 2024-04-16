@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../types/book';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable()
 export class BooksService {
-  books: Book[] = [
+  private localStorageKey = 'booksData';
+  private booksSubject: BehaviorSubject<Book[]> = new BehaviorSubject<Book[]>(
+    []
+  );
+  public books$: Observable<Book[]> = this.booksSubject.asObservable();
+  books_array: Book[] = [
     {
       id: 1,
       name: 'Rich Dad Poor Dad',
@@ -67,17 +73,41 @@ export class BooksService {
       amount: 319,
     },
   ];
-  constructor() {}
-
-  getAllBookDetails(): Book[] {
-    return this.books;
+  constructor() {
+    this.loadBooksFromLocalStorage();
   }
-  filterBooks(bookName: string, authorName: string): Book[] {
-    return this.books.filter((book) => {
-      return (
-        book.name.toLowerCase().includes(bookName.toLowerCase()) &&
-        book.author.toLowerCase().includes(authorName.toLowerCase())
+  private loadBooksFromLocalStorage(): void {
+    const booksData = localStorage.getItem(this.localStorageKey);
+    if (booksData) {
+      const books: Book[] = JSON.parse(booksData);
+      this.booksSubject.next(books);
+    }
+  }
+  saveBooksToLocalStorage(): void {
+    const storedBooks = JSON.parse(
+      localStorage.getItem(this.localStorageKey) as string
+    );
+    if (!storedBooks) {
+      localStorage.setItem(
+        this.localStorageKey,
+        JSON.stringify(this.books_array)
       );
-    });
+      this.booksSubject.next(this.books_array);
+    }
+  }
+  getAllBookDetails(): Observable<Book[]> {
+    return this.books$;
+  }
+  filterBooks(bookName: string, authorName: string): Observable<Book[]> {
+    return this.books$.pipe(
+      map((books: Book[]) => {
+        return books.filter((book) => {
+          return (
+            book.name.toLowerCase().includes(bookName.toLowerCase()) &&
+            book.author.toLowerCase().includes(authorName.toLowerCase())
+          );
+        });
+      })
+    );
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchService } from '../services/search.service';
+import { BooksService } from '../services/books.service';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,6 @@ export class SearchComponent {
   ngOnInit(): void {}
 
   searchBooks(bookName: string, authorName: string) {
-    console.log(bookName + ' ' + authorName);
     this.searchService.setSearchQuery({ bookName, authorName });
   }
 }
