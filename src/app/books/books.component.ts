@@ -72,6 +72,7 @@ export class BooksComponent implements OnInit {
   addToCart(book: Book) {
     if (this.authService.isAuthenticated) {
       this.cartService.addBookToCart(book);
+      alert('Book added to cart Successfully...');
     } else {
       alert('Login First...');
       this.router.navigate(['./auth']);

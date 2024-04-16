@@ -51,7 +51,7 @@
                     <div class="button-container">
                       <button
                         class="btn_edit"
-                        (click)="editBook('tab2', singlebook)"
+                        (click)="editBookBtn('tab2', singlebook)"
                       >
                         Edit
                       </button>
@@ -87,7 +87,8 @@
                       <img
                         style="max-width: 100%; margin: auto"
                         class="fit"
-                        src="https://m.media-amazon.com/images/I/51xwGSNX-EL._SY445_SX342_.jpg"
+                        name="addBookImageImg"
+                        [src]="single_book.image"
                         alt="BookImage"
                       />
                     </div>
@@ -97,46 +98,49 @@
                       <div class="form-group">
                         <label>Book Image</label>
                         <input
-                          type="email"
+                          type="text"
                           class="form-control custom-input"
-                          id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           placeholder="Enter Book Image URL"
+                          name="bookImage"
+                          [(ngModel)]="single_book.image"
                         />
                       </div>
                       <div class="form-group">
                         <label>Book Name</label>
                         <input
-                          type="email"
+                          type="text"
                           class="form-control custom-input"
-                          id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           placeholder="Enter Book Name"
+                          name="bookName"
+                          [(ngModel)]="single_book.name"
                         />
                       </div>
                       <div class="form-group">
                         <label>Author Name</label>
                         <input
-                          type="email"
+                          type="text"
                           class="form-control custom-input"
-                          id="exampleInputEmail1"
-                          aria-describedby="emailHelp"
                           placeholder="Enter Author Name"
+                          name="bookAuthor"
+                          [(ngModel)]="single_book.author"
                         />
                       </div>
                       <div class="form-group">
                         <label>Book Price</label>
                         <input
-                          type="email"
+                          type="text"
                           class="form-control custom-input"
-                          id="exampleInputEmail1"
-                          aria-describedby="emailHelp"
                           placeholder="Enter Book Price"
+                          name="bookPrice"
+                          [(ngModel)]="single_book.amount"
                         />
                       </div>
                       <button
                         type="submit"
                         class="btn btn-primary custom-button"
+                        (click)="addBook(single_book)"
                       >
                         Submit
                       </button>
@@ -166,7 +170,8 @@
                       <img
                         style="max-width: 100%; margin: auto"
                         class="fit"
-                        [src]="single_book?.image"
+                        name="bookImageImg"
+                        [src]="single_book.image"
                         alt="BookImage"
                       />
                     </div>
@@ -179,7 +184,8 @@
                           type="text"
                           class="form-control custom-input"
                           placeholder="Enter Book Image URL"
-                          [value]="single_book?.image"
+                          name="BookImage"
+                          [(ngModel)]="single_book.image"
                         />
                       </div>
                       <div class="form-group">
@@ -189,7 +195,8 @@
                           class="form-control custom-input"
                           aria-describedby="emailHelp"
                           placeholder="Enter Book Name"
-                          [value]="single_book?.name"
+                          name="bookName"
+                          [(ngModel)]="single_book.name"
                         />
                       </div>
                       <div class="form-group">
@@ -198,7 +205,8 @@
                           type="text"
                           class="form-control custom-input"
                           placeholder="Enter Author Name"
-                          [value]="single_book?.author"
+                          name="bookAuthor"
+                          [(ngModel)]="single_book.author"
                         />
                       </div>
                       <div class="form-group">
@@ -208,12 +216,14 @@
                           class="form-control custom-input"
                           aria-describedby="emailHelp"
                           placeholder="Enter Book Price"
-                          [value]="single_book?.amount"
+                          name="bookPrice"
+                          [(ngModel)]="single_book.amount"
                         />
                       </div>
                       <button
                         type="submit"
                         class="btn btn-primary custom-button"
+                        (click)="editBook(single_book)"
                       >
                         Submit
                       </button>

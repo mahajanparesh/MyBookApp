@@ -22,15 +22,16 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
       <li class="cart-button">
-        <a routerLink="/cart" (click)="cart()"
-          ><img src="../assets/cart.png" alt="Cart" width="25px"
-        /></a>
-      </li>
-      <li class="cart-button">
         <a (click)="toggleSearch()">
           <img src="../assets/search.png" alt="Search" width="20px" />
         </a>
       </li>
+      <li class="cart-button">
+        <a routerLink="/cart" (click)="cart()"
+          ><img src="../assets/cart.png" alt="Cart" width="25px"
+        /></a>
+      </li>
+
       <li class="logout-button" *ngIf="isSeller()">
         <a routerLink="/seller">Seller</a>
       </li>

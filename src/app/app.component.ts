@@ -33,8 +33,10 @@ export class AppComponent {
     return this.authService.isAuthenticated;
   }
   logout() {
-    this.sessionClear();
     this.authService.logout();
+    sessionStorage.clear();
+    localStorage.removeItem('booksData');
+    window.location.reload();
   }
 
   cart() {

@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'seller',
     component: SellerComponent,
-    canActivate: [SellerGuard],
+    // canActivate: [SellerGuard],
   },
 ];
 
