@@ -110,4 +110,16 @@ export class BooksService {
       })
     );
   }
+
+  deleteBook(bookId: number): void {
+    const currentBooks = this.booksSubject.value;
+    const updatedBooks = currentBooks.filter((book) => book.id !== bookId);
+    this.updateLocalStorage(updatedBooks);
+    alert('Book Deleted Successfully!!!');
+  }
+
+  updateLocalStorage(books: Book[]): void {
+    localStorage.setItem(this.localStorageKey, JSON.stringify(books));
+    this.booksSubject.next(books);
+  }
 }

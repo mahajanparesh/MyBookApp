@@ -6,12 +6,15 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SellerComponent } from './seller/seller.component';
 import { SellerGuard } from './seller/seller.guard';
-
 const routes: Routes = [
   { path: '', component: BooksComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
-  { path: 'seller', component: SellerComponent, canActivate: [SellerGuard] },
+  {
+    path: 'seller',
+    component: SellerComponent,
+    canActivate: [SellerGuard],
+  },
 ];
 
 @NgModule({

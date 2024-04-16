@@ -1,1 +1,231 @@
-<p>seller works!</p>
+<!-- card.component.html -->
+<div class="card-container">
+  <div class="card">
+    <div class="card-content">
+      <!-- Toggle Buttons -->
+      <div class="toggle-buttons">
+        <button
+          class="toggle-button"
+          [class.active]="isActiveTab('View Books')"
+          (click)="toggleTab('View Books')"
+        >
+          View Books
+        </button>
+        <button
+          class="toggle-button"
+          [class.active]="isActiveTab('Add Book')"
+          (click)="toggleTab('Add Book')"
+        >
+          {{ function_name }}
+        </button>
+      </div>
+
+      <!-- Tab Contents -->
+      <div *ngIf="currentTab === 'View Books'" class="tab-content scrollable">
+        <div class="container-fluid">
+          <div>
+            <div class="row">
+              <div
+                class="col-md-6 col-lg-3 col-sm-12"
+                style="margin-top: 30px"
+                *ngFor="let singlebook of books; let i = index"
+              >
+                <div
+                  class="card h-100 border border-white img-thumbnail"
+                  style="
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                  "
+                >
+                  <img
+                    src="{{ singlebook.image }}"
+                    class="card-img-top img-fluid"
+                    style="height: 350px"
+                  />
+                  <div class="card-body">
+                    <h3 class="card-title">{{ singlebook.name }}</h3>
+                    <p class="'card-text">by {{ singlebook.author }}</p>
+                    <p class="'card-text">
+                      {{ singlebook.amount | currency : "INR" }}
+                    </p>
+                    <div class="button-container">
+                      <button
+                        class="btn_edit"
+                        (click)="editBook('tab2', singlebook)"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn_delete"
+                        style="margin-left: 20px"
+                        (click)="deleteBook(singlebook)"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="currentTab === 'Add Book' && function_name === 'Add Book'"
+        class="tab-content"
+      >
+        <div class="parent-container">
+          <div class="centered-div">
+            <section class="py-5">
+              <div class="container">
+                <div class="row gx-5">
+                  <aside class="col-lg-6">
+                    <div
+                      class="border rounded-4 mb-3 d-flex justify-content-center"
+                    >
+                      <img
+                        style="max-width: 100%; margin: auto"
+                        class="fit"
+                        src="https://m.media-amazon.com/images/I/51xwGSNX-EL._SY445_SX342_.jpg"
+                        alt="BookImage"
+                      />
+                    </div>
+                  </aside>
+                  <main class="col-lg-6">
+                    <form>
+                      <div class="form-group">
+                        <label>Book Image</label>
+                        <input
+                          type="email"
+                          class="form-control custom-input"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter Book Image URL"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Book Name</label>
+                        <input
+                          type="email"
+                          class="form-control custom-input"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter Book Name"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Author Name</label>
+                        <input
+                          type="email"
+                          class="form-control custom-input"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter Author Name"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Book Price</label>
+                        <input
+                          type="email"
+                          class="form-control custom-input"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter Book Price"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        class="btn btn-primary custom-button"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </main>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- content -->
+      </div>
+
+      <div
+        *ngIf="currentTab === 'Add Book' && function_name === 'Edit Book'"
+        class="tab-content"
+      >
+        <div class="parent-container">
+          <div class="centered-div">
+            <section class="py-5">
+              <div class="container">
+                <div class="row gx-5">
+                  <aside class="col-lg-6">
+                    <div
+                      class="border rounded-4 mb-3 d-flex justify-content-center"
+                    >
+                      <img
+                        style="max-width: 100%; margin: auto"
+                        class="fit"
+                        [src]="single_book?.image"
+                        alt="BookImage"
+                      />
+                    </div>
+                  </aside>
+                  <main class="col-lg-6">
+                    <form>
+                      <div class="form-group">
+                        <label>Book Image</label>
+                        <input
+                          type="text"
+                          class="form-control custom-input"
+                          placeholder="Enter Book Image URL"
+                          [value]="single_book?.image"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Book Name</label>
+                        <input
+                          type="text"
+                          class="form-control custom-input"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter Book Name"
+                          [value]="single_book?.name"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Author Name</label>
+                        <input
+                          type="text"
+                          class="form-control custom-input"
+                          placeholder="Enter Author Name"
+                          [value]="single_book?.author"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label>Book Price</label>
+                        <input
+                          type="number"
+                          class="form-control custom-input"
+                          aria-describedby="emailHelp"
+                          placeholder="Enter Book Price"
+                          [value]="single_book?.amount"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        class="btn btn-primary custom-button"
+                      >
+                        Submit
+                      </button>
+                    </form>
+                  </main>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- content -->
+      </div>
+    </div>
+  </div>
+</div>
