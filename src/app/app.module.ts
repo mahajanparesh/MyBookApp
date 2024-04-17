@@ -10,6 +10,9 @@ import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellerComponent } from './seller/seller.component';
 import { SellerModule } from './seller/seller.module';
+import { FeatureComponentComponent } from './feature/feature-component/feature-component.component';
+import { SharedModule } from './shared/shared.module';
+import { FeatureModule } from './feature/feature.module';
 @NgModule({
   declarations: [AppComponent, CartComponent, AuthComponent],
   imports: [
@@ -20,6 +23,8 @@ import { SellerModule } from './seller/seller.module';
     FormsModule,
     ReactiveFormsModule,
     SellerModule,
+    FeatureModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

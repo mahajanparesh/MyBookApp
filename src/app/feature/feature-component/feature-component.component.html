@@ -1,0 +1,19 @@
+<H1>This is a Featured Module</H1><br />
+<h2>Implementation of custom pipe</h2>
+<br />
+<h4>Sorting Data in Acending Order According to the Price</h4>
+<table>
+  <thead></thead>
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    <tr *ngFor="let product of products | SortByPricePipe">
+      <td>{{ product.name }}</td>
+      <td>{{ product.price | customCurrencyFormat : "€" : 2 }}</td>
+      <td>{{ product.quantity }}</td>
+    </tr>
+  </tbody>
+</table>

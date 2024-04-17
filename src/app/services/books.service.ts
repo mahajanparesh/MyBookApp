@@ -41,6 +41,34 @@ export class BooksService {
         'https://m.media-amazon.com/images/I/51xwGSNX-EL._SY445_SX342_.jpg',
       amount: 319,
     },
+    {
+      id: 5,
+      name: 'Ratan Tata',
+      author: 'A.K. Gandhi',
+      image: 'https://m.media-amazon.com/images/I/71ppIPqdYNL._SY522_.jpg',
+      amount: 186,
+    },
+    {
+      id: 6,
+      name: 'Elon Musk',
+      author: 'Walter Isaacson',
+      image: 'https://m.media-amazon.com/images/I/71iWxmst49L._SY522_.jpg',
+      amount: 965,
+    },
+    {
+      id: 7,
+      name: 'The 5 AM Club',
+      author: 'Robin Sharma',
+      image: 'https://m.media-amazon.com/images/I/618ZOX7UNNL._SY522_.jpg',
+      amount: 240,
+    },
+    {
+      id: 8,
+      name: 'The Alchemist',
+      author: 'Paulo Coelho',
+      image: 'https://m.media-amazon.com/images/I/81ioPZFMeUL._SY522_.jpg',
+      amount: 331.69,
+    },
   ];
   constructor() {
     this.loadBooksFromLocalStorage();

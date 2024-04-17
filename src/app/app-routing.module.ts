@@ -6,10 +6,12 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SellerComponent } from './seller/seller.component';
 import { SellerGuard } from './seller/seller.guard';
+import { FeatureComponentComponent } from './feature/feature-component/feature-component.component';
 const routes: Routes = [
   { path: '', component: BooksComponent },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'auth', component: AuthComponent },
+  { path: 'feature', component: FeatureComponentComponent },
   {
     path: 'seller',
     loadChildren: () =>
