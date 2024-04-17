@@ -47,4 +47,7 @@ export class CartComponent implements OnInit {
       0
     );
   }
+  checkout() {
+    alert('Checkout Successfully');
+  }
 }

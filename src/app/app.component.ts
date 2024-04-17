@@ -37,6 +37,7 @@ export class AppComponent {
     sessionStorage.clear();
     localStorage.removeItem('booksData');
     window.location.reload();
+    this.router.navigate(['/auth']);
   }
 
   cart() {
