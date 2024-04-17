@@ -12,8 +12,9 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   {
     path: 'seller',
-    component: SellerComponent,
-    // canActivate: [SellerGuard],
+    loadChildren: () =>
+      import('./seller/seller.module').then((m) => m.SellerModule),
+    canActivate: [SellerGuard],
   },
 ];
 

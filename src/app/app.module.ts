@@ -9,8 +9,9 @@ import { BooksModule } from './books/books.module';
 import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellerComponent } from './seller/seller.component';
+import { SellerModule } from './seller/seller.module';
 @NgModule({
-  declarations: [AppComponent, CartComponent, AuthComponent, SellerComponent],
+  declarations: [AppComponent, CartComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +19,7 @@ import { SellerComponent } from './seller/seller.component';
     BooksModule,
     FormsModule,
     ReactiveFormsModule,
+    SellerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
