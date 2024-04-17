@@ -4,6 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { SearchService } from './services/search.service';
+import { BooksService } from './services/books.service';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,13 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private booksService: BooksService
   ) {}
   ngOnInit() {
     initializeApp(firebaseConfig);
     this.authService.onInitAuthChangeListener();
+    this.booksService.saveBooksToLocalStorage();
   }
   sessionClear() {
     sessionStorage.clear();
@@ -30,8 +33,10 @@ export class AppComponent {
     return this.authService.isAuthenticated;
   }
   logout() {
-    this.sessionClear();
     this.authService.logout();
+    sessionStorage.clear();
+    localStorage.removeItem('booksData');
+    window.location.reload();
   }
 
   cart() {

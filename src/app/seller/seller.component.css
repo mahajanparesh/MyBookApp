@@ -1,0 +1,145 @@
+/* card.component.css */
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  /* Adjust as needed */
+}
+
+.card {
+  width: 95%; /* Adjust as needed */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  text-align: left;
+}
+.toggle-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; /* Adjust spacing as needed */
+}
+
+.toggle-button {
+  background-color: #ffffff;
+  color: #000;
+  border-radius: 4px;
+  padding: 1vh 2vw; /* Adjust padding as needed */
+  cursor: pointer;
+}
+
+.toggle-button:not(:last-child) {
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.toggle-button.active {
+  background-color: black;
+  color: white;
+  border: 0.18rem solid #000;
+}
+
+.tab-content {
+  /* Styles for tab content */
+}
+.books-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container button {
+  flex-grow: 1;
+}
+.btn_edit:hover {
+  background-color: #ffffff;
+  border-color: #000;
+  border-width: 0.18rem;
+  color: rgb(0, 0, 0);
+  width: 100%;
+  padding: 1vh;
+  border-radius: 4px;
+  color: black;
+}
+.btn_edit {
+  background-color: black;
+  color: white;
+  color: white;
+  width: 100%;
+  padding: 1vh;
+  border-radius: 4px;
+  border-color: solid #000000;
+}
+.btn_delete:hover {
+  background-color: #ffffff;
+  border-color: #e83e35;
+  border-width: 0.18rem;
+  width: 100%;
+  padding: 1vh;
+  border-radius: 4px;
+  color: #e83e35;
+  border-color: solid #e83e35;
+  color: #e83e35;
+}
+.btn_delete {
+  background-color: #e83e35;
+  width: 100%;
+  padding: 1vh;
+  border-radius: 4px;
+  color: white;
+  border-color: #e83e35;
+}
+.scrollable {
+  overflow-y: auto;
+  max-height: 73vh;
+}
+.parent-container {
+  display: flex;
+  justify-content: center; /* Adjust this to suit your needs */
+  background-color: #ffffff; /* Just for visualization */
+}
+
+.centered-div {
+  width: 150vh;
+  background-color: #ffffff; /* Vertical centering of content */
+}
+.custom-input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.custom-button {
+  border-radius: 20px;
+  border: 1px solid #000000;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.custom-button:active {
+  transform: scale(0.95);
+}
+
+.custom-button:focus {
+  outline: none;
+}

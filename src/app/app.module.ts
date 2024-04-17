@@ -9,8 +9,12 @@ import { BooksModule } from './books/books.module';
 import { AuthComponent } from './auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellerComponent } from './seller/seller.component';
+import { SellerModule } from './seller/seller.module';
+import { FeatureComponentComponent } from './feature/feature-component/feature-component.component';
+import { SharedModule } from './shared/shared.module';
+import { FeatureModule } from './feature/feature.module';
 @NgModule({
-  declarations: [AppComponent, CartComponent, AuthComponent, SellerComponent],
+  declarations: [AppComponent, CartComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +22,9 @@ import { SellerComponent } from './seller/seller.component';
     BooksModule,
     FormsModule,
     ReactiveFormsModule,
+    SellerModule,
+    FeatureModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
