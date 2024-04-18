@@ -20,7 +20,7 @@ export class AppComponent {
     private searchService: SearchService,
     private booksService: BooksService
   ) {}
-  ngOnInit() {
+  async ngOnInit() {
     initializeApp(firebaseConfig);
     this.authService.onInitAuthChangeListener();
     this.booksService.saveBooksToLocalStorage();
@@ -44,6 +44,8 @@ export class AppComponent {
     if (!this.isAuthenticated()) {
       alert('Login First...');
       this.router.navigate(['./auth']);
+    } else {
+      this.router.navigate(['./cart']);
     }
   }
   isSeller() {
