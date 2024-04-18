@@ -68,10 +68,23 @@ export class AuthService {
   }
 
   onInitAuthChangeListener() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user: User | null) => {
-      this.isAuthenticated = !!user;
-      this.checkSeller(user?.email || '');
+    return new Promise<void>((resolve) => {
+      const auth = getAuth();
+      if (auth.currentUser) {
+        this.isAuthenticated = true;
+        resolve();
+      }
+      onAuthStateChanged(auth, (user: User | null) => {
+        if (user) {
+          this.isAuthenticated = true;
+          this.checkSeller(user?.email || '');
+        } else {
+          this.isAuthenticated = false;
+        }
+        // this.isAuthenticated = !!user;
+        // this.checkSeller(user?.email || '');
+        resolve();
+      });
     });
   }
   logout() {
