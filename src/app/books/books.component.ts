@@ -70,7 +70,7 @@ export class BooksComponent implements OnInit {
   }
 
   addToCart(book: Book) {
-    if (this.authService.isAuthenticated) {
+    if (this.authService.isUserAuthenticated()) {
       this.cartService.addBookToCart(book);
       alert('Book added to cart Successfully...');
     } else {

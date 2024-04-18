@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
   async canActivate() {
     await this.authService.onInitAuthChangeListener();
-    if (this.authService.isAuthenticated) {
+    if (this.authService.isUserAuthenticated()) {
       return true;
     } else {
       alert('Your are not authorized to access this page');
